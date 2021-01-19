@@ -3,7 +3,7 @@ import styled from "styled-components";
 import sanityClient from "./sanityClient";
 
 const App: React.FC = () => {
-	const [welcomeData, setWelcomeData] = useState<Array<{message: string}>>([]);
+	const [welcomeData, setWelcomeData] = useState<Array<{message: string}>>([{message: ""}]);
 
 	useEffect(() => {
 		sanityClient

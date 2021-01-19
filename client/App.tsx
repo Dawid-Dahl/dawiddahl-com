@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import styled from "styled-components";
 
 const App: React.FC = () => {
@@ -18,7 +18,7 @@ const OuterWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-	max-width: 30em;
+	max-width: 90%;
 	margin: 0 1em;
 	display: flex;
 	align-items: center;
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.h1`
-	padding: 1em;
+	padding: 2em;
 	text-align: center;
 	@media only screen and (max-width: 474px) {
 		font-size: 1.5em;

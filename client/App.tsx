@@ -1,11 +1,29 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
+import sanityClient from "./sanityClient";
 
 const App: React.FC = () => {
+	const [welcomeData, setWelcomeData] = useState([
+		{
+			message: "",
+		},
+	]);
+
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "welcome"] {
+			message
+		}`
+			)
+			.then(data => setWelcomeData(data))
+			.catch(console.error);
+	}, []);
+
 	return (
 		<OuterWrapper>
 			<Wrapper>
-				<Header>Hello from dawiddahl.com!</Header>
+				<Header>{welcomeData && welcomeData[0].message}</Header>
 			</Wrapper>
 		</OuterWrapper>
 	);

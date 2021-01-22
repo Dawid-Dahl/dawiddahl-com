@@ -63,6 +63,11 @@ const NavButton = styled.div<StyledNavButtonProps>`
 	transition: all 0.2s;
 	cursor: pointer;
 
+	&:hover {
+		background-color: ${props =>
+			props.isNavToggled ? "var(--main-color)" : "rgb(186 178 255)"};
+	}
+
 	@media only screen and (max-width: 474px) {
 	}
 `;

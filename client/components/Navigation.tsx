@@ -11,7 +11,11 @@ const Navigation: React.FC<Props> = () => {
 	return (
 		<Wrapper>
 			<Shell>
-				<NavButton onClick={handleClick} isNavToggled={isNavToggled} />
+				<NavButton
+					onClick={handleClick}
+					isNavToggled={isNavToggled}
+					imageLink="//s.svgbox.net/hero-outline.svg?fill=fff#menu-alt-1"
+				/>
 				<Bar isNavToggled={isNavToggled}>
 					<List>
 						<Icon
@@ -39,6 +43,7 @@ const Navigation: React.FC<Props> = () => {
 
 type StyledNavButtonProps = {
 	isNavToggled: boolean;
+	imageLink: string;
 };
 
 const NavButton = styled.div<StyledNavButtonProps>`
@@ -48,11 +53,14 @@ const NavButton = styled.div<StyledNavButtonProps>`
 	border-radius: ${props => (props.isNavToggled ? "0 0" : "50%")};
 	background-color: ${props => (props.isNavToggled ? "var(--main-color)" : "rgb(176 167 255)")};
 	z-index: 2;
-	background-image: url("//s.svgbox.net/hero-outline.svg?fill=fff#menu-alt-1");
+	background-image: ${props =>
+		props.isNavToggled
+			? "url(https://s2.svgbox.net/hero-outline.svg?color=white&ic=x)"
+			: `url(${props.imageLink})`};
 	background-size: 50%;
 	background-repeat: no-repeat;
 	background-position: center;
-	transition: all 0.3s;
+	transition: all 0.2s;
 	cursor: pointer;
 
 	@media only screen and (max-width: 474px) {
@@ -67,7 +75,7 @@ const Bar = styled.div<StyledBarProps>`
 	position: absolute;
 	height: 100%;
 	width: ${props => (props.isNavToggled ? "100%" : "0%")};
-	transition: all 0.4s ease-in-out 0.1s;
+	transition: all 0.3s ease-in-out 0.1s;
 	clip-path: ${props =>
 		props.isNavToggled ? "ellipse(20em 3em at 50% 50%)" : "ellipse(2.25em 2.25em at 0% 50%)"};
 	background: linear-gradient(
@@ -135,6 +143,7 @@ const Icon = styled.li<StyledIconProps>`
 	z-index: 2;
 	cursor: pointer;
 	opacity: ${props => (props.isNavToggled ? "100%" : "0%")};
+	transition: all 0.2s;
 
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.2);

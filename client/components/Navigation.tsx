@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import {animated, useSpring, config, useTrail} from "react-spring";
 import icons from "../content/Icons";
+import Routes from "./Routes";
+import {NavLink} from "react-router-dom";
 
 type Props = {};
 
@@ -43,7 +45,9 @@ const Navigation: React.FC<Props> = () => {
 				<Bar style={barAnimation}>
 					<List>
 						{iconTrail.map((trail, i) => (
-							<Icon key={i} $imageLink={icons[i].imageLink} style={trail} />
+							<NavLink key={i} to={`/${icons[i].name}`}>
+								<Icon $imageLink={icons[i].imageLink} style={trail}></Icon>
+							</NavLink>
 						))}
 					</List>
 				</Bar>
@@ -126,9 +130,17 @@ const List = styled.ul`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	list-style-type: none;
 	height: 100%;
 	margin: 0;
+
+	> a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		list-style-type: none;
+		height: 100%;
+		margin: 0;
+	}
 `;
 
 type StyledIconProps = {

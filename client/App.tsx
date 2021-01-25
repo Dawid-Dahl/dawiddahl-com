@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Circle from "./components/Circle";
-import Glass from "./components/Glass";
+import Main from "./components/Main";
 import Navigation from "./components/Navigation";
 import SVGBackground from "./components/SVGBackground";
 
@@ -27,7 +27,7 @@ const App: React.FC = () => {
 			/>
 			<OuterWrapper>
 				<Wrapper>
-					<Glass />
+					<Main />
 				</Wrapper>
 			</OuterWrapper>
 			<Navigation />
@@ -49,7 +49,6 @@ const OuterWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-	width: 70%;
 	height: 100vh;
 	margin: 0 1em;
 	display: flex;
@@ -58,7 +57,6 @@ const Wrapper = styled.div`
 	flex-direction: column;
 
 	@media only screen and (max-width: 474px) {
-		width: 90%;
 		justify-content: flex-start;
 		margin-top: 2em;
 	}

@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
+import {animated, useSpring, config, useTrail} from "react-spring";
+import icons from "../content/Icons";
 
 type Props = {};
 
@@ -8,32 +10,41 @@ const Navigation: React.FC<Props> = () => {
 
 	const handleClick = () => setIsNavToggled(!isNavToggled);
 
+	const navButtonAnimation = useSpring({
+		borderRadius: isNavToggled ? "50% 0% 0% 50%" : "50% 50% 50% 50%",
+		backgroundColor: isNavToggled ? "rgb(122, 105, 255)" : "rgb(176,167,255)",
+		config: config.stiff,
+	});
+
+	const barAnimation = useSpring({
+		clipPath: isNavToggled
+			? "ellipse(20em 3em at 50% 50%)"
+			: "ellipse(2.25em 2.25em at 0% 50%)",
+		width: isNavToggled ? "100%" : "0%",
+		opacity: isNavToggled ? 1 : 0,
+		config: config.wobbly,
+	});
+
+	const iconTrail = useTrail(icons.length, {
+		opacity: isNavToggled ? 1 : 0,
+		transform: isNavToggled ? "scale(1) translateX(0px)" : "scale(0) translateX(-20px)",
+		config: config.stiff,
+	});
+
 	return (
 		<Wrapper>
 			<Shell>
 				<NavButton
 					onClick={handleClick}
-					isNavToggled={isNavToggled}
-					imageLink="//s.svgbox.net/hero-outline.svg?fill=fff#menu-alt-1"
+					$isNavToggled={isNavToggled}
+					$imageLink="//s.svgbox.net/hero-outline.svg?fill=fff#menu-alt-1"
+					style={navButtonAnimation}
 				/>
-				<Bar isNavToggled={isNavToggled}>
+				<Bar style={barAnimation}>
 					<List>
-						<Icon
-							imageLink="https://s2.svgbox.net/hero-outline.svg?color=7a69ff&ic=identification"
-							isNavToggled={isNavToggled}
-						/>
-						<Icon
-							imageLink="https://s2.svgbox.net/hero-outline.svg?color=7a69ff&ic=archive"
-							isNavToggled={isNavToggled}
-						/>
-						<Icon
-							imageLink="https://s2.svgbox.net/hero-outline.svg?color=7a69ff&ic=badge-check"
-							isNavToggled={isNavToggled}
-						/>
-						<Icon
-							imageLink="https://s2.svgbox.net/hero-outline.svg?color=7a69ff&ic=share"
-							isNavToggled={isNavToggled}
-						/>
+						{iconTrail.map((trail, i) => (
+							<Icon key={i} $imageLink={icons[i].imageLink} style={trail} />
+						))}
 					</List>
 				</Bar>
 			</Shell>
@@ -42,47 +53,36 @@ const Navigation: React.FC<Props> = () => {
 };
 
 type StyledNavButtonProps = {
-	isNavToggled: boolean;
-	imageLink: string;
+	$isNavToggled: boolean;
+	$imageLink: string;
 };
 
-const NavButton = styled.div<StyledNavButtonProps>`
+const NavButton = styled(animated.div)<StyledNavButtonProps>`
 	position: absolute;
 	height: 100%;
 	width: 3.5em;
-	border-radius: ${props => (props.isNavToggled ? "0 0" : "50%")};
-	background-color: ${props => (props.isNavToggled ? "var(--main-color)" : "rgb(176 167 255)")};
 	z-index: 2;
 	background-image: ${props =>
-		props.isNavToggled
+		props.$isNavToggled
 			? "url(https://s2.svgbox.net/hero-outline.svg?color=white&ic=x)"
-			: `url(${props.imageLink})`};
+			: `url(${props.$imageLink})`};
 	background-size: 50%;
 	background-repeat: no-repeat;
 	background-position: center;
-	transition: all 0.2s;
 	cursor: pointer;
 
 	&:hover {
 		background-color: ${props =>
-			props.isNavToggled ? "var(--main-color)" : "rgb(186 178 255)"};
+			props.$isNavToggled ? "var(--main-color)" : "rgb(186,178,255)"};
 	}
 
 	@media only screen and (max-width: 474px) {
 	}
 `;
 
-type StyledBarProps = {
-	isNavToggled: boolean;
-};
-
-const Bar = styled.div<StyledBarProps>`
+const Bar = styled(animated.div)`
 	position: absolute;
 	height: 100%;
-	width: ${props => (props.isNavToggled ? "100%" : "0%")};
-	transition: all 0.3s ease-in-out 0.1s;
-	clip-path: ${props =>
-		props.isNavToggled ? "ellipse(20em 3em at 50% 50%)" : "ellipse(2.25em 2.25em at 0% 50%)"};
 	background: linear-gradient(
 		to right bottom,
 		rgba(255, 255, 255, 0.7),
@@ -93,7 +93,6 @@ const Bar = styled.div<StyledBarProps>`
 	left: 5px;
 
 	@media only screen and (max-width: 474px) {
-		width: ${props => (props.isNavToggled ? "100%" : "0%")};
 	}
 `;
 
@@ -103,7 +102,6 @@ const Shell = styled.div`
 	width: 20em;
 	margin: 0 1em;
 	border-radius: 2em;
-	overflow: hidden;
 
 	@media only screen and (max-width: 474px) {
 		width: 18em;
@@ -134,21 +132,19 @@ const List = styled.ul`
 `;
 
 type StyledIconProps = {
-	imageLink: string;
-	isNavToggled: boolean;
+	$imageLink: string;
 };
 
-const Icon = styled.li<StyledIconProps>`
+const Icon = styled(animated.li)<StyledIconProps>`
 	height: 100%;
 	width: 3.5em;
-	background-image: ${props => `url(${props.imageLink})`};
+	background-image: ${props => `url(${props.$imageLink})`};
 	background-size: 50%;
 	background-repeat: no-repeat;
 	background-position: center;
 	z-index: 2;
+	transition: border-radius 0.2s, background-color 0.2s;
 	cursor: pointer;
-	opacity: ${props => (props.isNavToggled ? "100%" : "0%")};
-	transition: all 0.2s;
 
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.2);

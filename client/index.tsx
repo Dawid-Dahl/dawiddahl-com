@@ -1,12 +1,10 @@
-import {History} from "history";
-import history from "./history";
 import React from "react";
 import ReactDOM from "react-dom";
-import {Route, Router, Switch} from "react-router";
+import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 import App from "./App";
 
 ReactDOM.render(
-	<Router history={history as History<History>}>
+	<Router>
 		<Switch>
 			<Route path="/" component={App} />
 		</Switch>

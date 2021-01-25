@@ -4,9 +4,9 @@ import Glass from "./Glass";
 
 const Projects: React.FC = () => {
 	return (
-		<Glass>
+		<>
 			<p>Projects!</p>
-		</Glass>
+		</>
 	);
 };
 

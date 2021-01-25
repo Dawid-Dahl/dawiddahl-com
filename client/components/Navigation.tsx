@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import {animated, useSpring, config, useTrail} from "react-spring";
-import icons from "../content/Icons";
+import {icons} from "../content/Icons";
 import Routes from "./Routes";
 import {NavLink} from "react-router-dom";
 

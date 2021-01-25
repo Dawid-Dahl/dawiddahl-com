@@ -4,9 +4,9 @@ import Glass from "./Glass";
 
 const Skills: React.FC = () => {
 	return (
-		<Glass>
+		<>
 			<p>Skills!</p>
-		</Glass>
+		</>
 	);
 };
 

@@ -1,6 +1,6 @@
 type Icon = {name: string; imageLink: string};
 
-const icons: Icon[] = [
+export const icons: Icon[] = [
 	{
 		name: "home",
 		imageLink: "https://s2.svgbox.net/hero-outline.svg?color=7a69ff&ic=identification",
@@ -13,4 +13,9 @@ const icons: Icon[] = [
 	{name: "contact", imageLink: "https://s2.svgbox.net/hero-outline.svg?color=7a69ff&ic=share"},
 ];
 
-export default icons;
+export enum IconsList {
+	home,
+	projects,
+	skills,
+	contact,
+}

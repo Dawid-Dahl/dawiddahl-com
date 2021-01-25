@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {animated} from "react-spring";
 
 const Glass: React.FC = ({children}) => {
 	return (
@@ -9,13 +10,12 @@ const Glass: React.FC = ({children}) => {
 	);
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(animated.div)`
 	width: 75vw;
 	height: 75vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	backdrop-filter: blur(0.5em);
 	background: linear-gradient(
 		to right bottom,
 		rgba(255, 255, 255, 0.7),

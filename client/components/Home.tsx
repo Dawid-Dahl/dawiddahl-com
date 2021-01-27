@@ -17,6 +17,7 @@ const Home: React.FC = () => {
 				</Header>
 			</ImageArea>
 			<TextArea>
+				<ClipPath />
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi in assumenda
 					magnam impedit ea, ex quam veniam adipisci omnis fuga doloremque placeat aliquid
@@ -45,14 +46,22 @@ const ImageArea = styled.div`
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+
+	@media only screen and (max-width: 474px) {
+	}
 `;
 
 const Image = styled.a`
 	border-radius: 50%;
 	width: 10em;
 	height: 10em;
-	box-shadow: rgb(50, 50, 93) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+	box-shadow: var(--box-shadow);
 	cursor: pointer;
+
+	@media only screen and (max-height: 720px) {
+		width: 7em;
+		height: 7em;
+	}
 
 	> img {
 		width: 10em;
@@ -60,6 +69,11 @@ const Image = styled.a`
 		border-radius: 50%;
 		object-fit: cover;
 		object-position: 0px -25px;
+
+		@media only screen and (max-height: 720px) {
+			width: 7em;
+			height: 7em;
+		}
 	}
 `;
 
@@ -68,18 +82,50 @@ const Header = styled.div`
 
 	h1 {
 		margin-top: 1em;
+		text-align: center;
+
+		@media only screen and (max-height: 700px) {
+			margin: 0.3em;
+			font-size: 1.8em;
+		}
+
+		@media only screen and (max-width: 350px) {
+			margin: 0.5em;
+			font-size: 1em;
+		}
 	}
 
 	h3 {
 		margin: 0;
+		text-align: center;
+
+		@media only screen and (max-width: 474px) {
+			margin: 0 1em;
+		}
 	}
 
 	p {
 		margin: 0;
+		text-align: center;
+	}
+`;
+
+const ClipPath = styled.div`
+	width: 100%;
+	height: 100%;
+	shape-outside: polygon(46% 0%, 0% 0%, 0% 53%, 8% 31%, 13% 20%, 20% 12%, 30% 6%);
+	shape-margin: 1em;
+	float: left;
+
+	@media only screen and (max-width: 474px) {
+		/* shape-outside: polygon(100% 0%, 0% 0%, 0% 70%, 8% 34%, 15% 20%, 28% 12%, 56% 5%); */
+		shape-outside: polygon(100% 0%, 0% 0%, 0% 51%, 8% 34%, 17% 24%, 36% 11%, 56% 5%);
+		width: 75%;
 	}
 `;
 
 const TextArea = styled.div`
+	position: relative;
 	height: 40%;
 	background: linear-gradient(
 		to right bottom,
@@ -89,7 +135,50 @@ const TextArea = styled.div`
 	border-radius: 15rem 0rem 2rem 2rem;
 	border-top: 10px solid var(--main-color-light);
 	color: var(--main-color);
-	padding: 5em 3em 0 6em;
+	padding: 0 2em;
+
+	@media only screen and (max-width: 474px) {
+		padding: 0 1em;
+		overflow: auto;
+	}
+
+	p {
+		text-align: center;
+		margin-top: 15%;
+		padding: 1em;
+
+		@media only screen and (max-width: 474px) {
+			margin-top: 5%;
+		}
+
+		@media only screen and (min-width: 1500px) {
+			margin-top: 10%;
+		}
+
+		@media only screen and (max-height: 1100px) {
+			margin-top: 8%;
+		}
+
+		/* @media only screen and (max-height: 700px) {
+			margin-top: 2em;
+		}
+
+		@media only screen and (max-width: 1000px) {
+			margin-top: 3em;
+		}
+
+		@media only screen and (max-width: 800px) {
+			margin-top: 1em;
+		}
+
+		@media only screen and (max-width: 474px) {
+			margin-top: 0em;
+		}
+
+		@media only screen and (max-width: 474px) and (max-height: 700px) {
+			padding: 0em;
+		} */
+	}
 `;
 
 export default Home;

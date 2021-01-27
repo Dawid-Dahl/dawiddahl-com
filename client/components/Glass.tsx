@@ -25,7 +25,6 @@ const Wrapper = styled(animated.div)`
 	z-index: 1;
 
 	@media only screen and (max-width: 474px) {
-		font-size: 1.5em;
 		width: 90vw;
 		height: 85.5vh;
 	}

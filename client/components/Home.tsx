@@ -81,11 +81,10 @@ const Header = styled.div`
 	color: var(--white-transparent);
 
 	h1 {
-		margin-top: 1em;
+		margin: 0.3em;
 		text-align: center;
 
 		@media only screen and (max-height: 700px) {
-			margin: 0.3em;
 			font-size: 1.8em;
 		}
 
@@ -136,16 +135,20 @@ const TextArea = styled.div`
 	border-top: 10px solid var(--main-color-light);
 	color: var(--main-color);
 	padding: 0 2em;
+	overflow: auto;
 
 	@media only screen and (max-width: 474px) {
 		padding: 0 1em;
-		overflow: auto;
 	}
 
 	p {
 		text-align: center;
 		margin-top: 15%;
 		padding: 1em;
+
+		@media only screen and (min-width: 1100px) {
+			font-size: 1.2em;
+		}
 
 		@media only screen and (max-width: 474px) {
 			margin-top: 5%;
@@ -156,7 +159,11 @@ const TextArea = styled.div`
 		}
 
 		@media only screen and (max-height: 1100px) {
-			margin-top: 8%;
+			margin-top: 5%;
+		}
+
+		@media only screen and (min-width: 1500px) and (max-height: 1100px) {
+			margin-top: 7%;
 		}
 
 		/* @media only screen and (max-height: 700px) {

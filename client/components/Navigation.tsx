@@ -2,12 +2,14 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import {animated, useSpring, config, useTrail} from "react-spring";
 import {icons} from "../content/Icons";
-import Routes from "./Routes";
 import {NavLink} from "react-router-dom";
+import {useMediaQuery} from "react-responsive";
 
 type Props = {};
 
 const Navigation: React.FC<Props> = () => {
+	const isMobile = useMediaQuery({maxWidth: 767});
+
 	const [isNavToggled, setIsNavToggled] = useState(false);
 
 	const handleClick = () => setIsNavToggled(!isNavToggled);
@@ -24,7 +26,7 @@ const Navigation: React.FC<Props> = () => {
 			: "ellipse(2.25em 2.25em at 0% 50%)",
 		width: isNavToggled ? "100%" : "0%",
 		opacity: isNavToggled ? 1 : 0,
-		config: config.wobbly,
+		config: isMobile ? config.default : config.wobbly,
 	});
 
 	const iconTrail = useTrail(icons.length, {

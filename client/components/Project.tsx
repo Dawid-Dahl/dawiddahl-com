@@ -86,10 +86,11 @@ const Image = styled.a`
 `;
 
 const ContentWrapper = styled.div`
-	margin: 3em 3em 3em 0em;
+	margin: 2em 2em 2em 0em;
 
 	@media only screen and (max-width: 1000px) {
-		margin: 3em 3em 3em 3em;
+		margin: 2em 2em 2em 2em;
+		text-align: center;
 	}
 `;
 

@@ -44,10 +44,6 @@ const SkillsWrapper = styled.div`
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	grid-gap: 1em;
 	margin: 0 auto;
-
-	@media only screen and (max-width: 900px) {
-		grid-gap: 0;
-	} ;
 `;
 
 const Header = styled.h1`

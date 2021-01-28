@@ -33,7 +33,6 @@ const Wrapper = styled.div`
 	justify-content: center;
 	border-radius: var(--border-radius-card);
 	background-color: var(--white-transparent-card);
-	margin: 0.5em 0em;
 	box-shadow: var(--box-shadow-light);
 `;
 

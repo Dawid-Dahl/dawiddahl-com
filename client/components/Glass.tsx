@@ -21,7 +21,7 @@ const Wrapper = styled(animated.div)`
 		rgba(255, 255, 255, 0.7),
 		rgba(255, 255, 255, 0.3)
 	);
-	border-radius: 2rem;
+	border-radius: var(--border-radius);
 	z-index: 1;
 
 	@media only screen and (max-width: 474px) {

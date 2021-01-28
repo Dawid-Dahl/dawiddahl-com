@@ -4,10 +4,12 @@ import Circle from "./components/Circle";
 import Main from "./components/Main";
 import Navigation from "./components/Navigation";
 import SVGBackground from "./components/SVGBackground";
+import GlobalStyle from "./globalStyles";
 
 const App: React.FC = () => {
 	return (
 		<Root>
+			<GlobalStyle />
 			<SVGBackground color="rgba(255, 255, 255, 0.064)" />
 			<Circle
 				position={{

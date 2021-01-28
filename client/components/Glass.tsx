@@ -16,13 +16,10 @@ const Wrapper = styled(animated.div)`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(
-		to right bottom,
-		rgba(255, 255, 255, 0.7),
-		rgba(255, 255, 255, 0.3)
-	);
+	background: var(--glassy);
 	border-radius: var(--border-radius);
 	z-index: 1;
+	overflow: hidden;
 
 	@media only screen and (max-width: 474px) {
 		width: 90vw;

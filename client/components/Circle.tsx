@@ -29,11 +29,7 @@ const Wrapper = styled.div<CircleWrapperProps>`
 	right: ${({position}) => `${position.right}%`};
 	bottom: ${({position}) => `${position.bottom}%`};
 	left: ${({position}) => `${position.left}%`};
-	background: linear-gradient(
-		to right bottom,
-		rgba(255, 255, 255, 0.7),
-		rgba(255, 255, 255, 0.3)
-	);
+	background: var(--glassy);
 	height: 14em;
 	width: 14em;
 	z-index: 0;

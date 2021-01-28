@@ -6,9 +6,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	::-webkit-scrollbar-track {
-		/* box-shadow: inset 0 0 5px grey; */
         margin: 2em;
-		/* border-radius: 10px; */
 	}
 
 	::-webkit-scrollbar-thumb {

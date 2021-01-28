@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Project from "./Project";
-import Card from "./Project";
 
 const Projects: React.FC = () => {
 	return (
@@ -11,6 +10,7 @@ const Projects: React.FC = () => {
 				<Project />
 				<Project />
 				<Project />
+				<InvisibleBox />
 			</ProjectsWrapper>
 		</Wrapper>
 	);
@@ -42,6 +42,13 @@ const Header = styled.h1`
 	height: auto;
 	color: var(--white-transparent);
 	margin-top: 4em;
+`;
+
+const InvisibleBox = styled.div`
+	min-height: 10%;
+	width: 100%;
+	background-color: transparent;
+	color: transparent;
 `;
 
 export default Projects;

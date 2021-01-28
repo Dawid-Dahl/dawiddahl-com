@@ -126,11 +126,7 @@ const ClipPath = styled.div`
 const TextArea = styled.div`
 	position: relative;
 	height: 40%;
-	background: linear-gradient(
-		to right bottom,
-		rgba(255, 255, 255, 0.7),
-		rgba(255, 255, 255, 0.3)
-	);
+	background: var(--glassy);
 	border-radius: 15rem 0rem 2rem 2rem;
 	border-top: 10px solid var(--main-color-light);
 	color: var(--main-color);
@@ -145,6 +141,7 @@ const TextArea = styled.div`
 		text-align: center;
 		margin-top: 15%;
 		padding: 1em;
+		font-weight: lighter;
 
 		@media only screen and (min-width: 1100px) {
 			font-size: 1.2em;
@@ -165,26 +162,6 @@ const TextArea = styled.div`
 		@media only screen and (min-width: 1500px) and (max-height: 1100px) {
 			margin-top: 7%;
 		}
-
-		/* @media only screen and (max-height: 700px) {
-			margin-top: 2em;
-		}
-
-		@media only screen and (max-width: 1000px) {
-			margin-top: 3em;
-		}
-
-		@media only screen and (max-width: 800px) {
-			margin-top: 1em;
-		}
-
-		@media only screen and (max-width: 474px) {
-			margin-top: 0em;
-		}
-
-		@media only screen and (max-width: 474px) and (max-height: 700px) {
-			padding: 0em;
-		} */
 	}
 `;
 

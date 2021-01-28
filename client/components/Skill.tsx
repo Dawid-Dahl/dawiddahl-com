@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 type Props = {};
 
-const Project: React.FC<Props> = () => {
+const Skill: React.FC<Props> = () => {
 	return (
 		<Wrapper>
 			<ImageWrapper>
@@ -17,15 +17,9 @@ const Project: React.FC<Props> = () => {
 				</Image>
 			</ImageWrapper>
 			<ContentWrapper>
-				<Header>My Project</Header>
-				<Description>
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium rem alias
-					totam minus aut dolores amet nemo assumenda, quo delectus id, ratione, impedit
-					aspernatur commodi quibusdam illum temporibus repudiandae nesciunt non
-					perferendis quisquam consequatur sint! Esse deserunt distinctio at vel et. Cum
-					consequatur voluptates fuga dolor quibusdam recusandae. Omnis, commodi!
-				</Description>
-				<Link href="">Link</Link>
+				<Header>Skill</Header>
+				<Description>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</Description>
+				<Link></Link>
 			</ContentWrapper>
 		</Wrapper>
 	);
@@ -33,7 +27,7 @@ const Project: React.FC<Props> = () => {
 
 const Wrapper = styled.div`
 	height: auto;
-	width: 80%;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -41,22 +35,14 @@ const Wrapper = styled.div`
 	background-color: var(--white-transparent-card);
 	margin: 0.5em 0em;
 	box-shadow: var(--box-shadow-light);
-
-	@media only screen and (max-width: 1000px) {
-		flex-direction: column;
-	}
-
-	@media only screen and (max-width: 474px) {
-		width: 90%;
-	}
 `;
 
 const ImageWrapper = styled.div`
 	display: flex;
-	margin: 3em;
+	margin: 1em;
 
-	@media only screen and (max-height: 1000px) {
-		margin: 3em 3em 0em 3em;
+	@media only screen and (max-width: 474px) {
+		margin: 0.5em;
 	}
 `;
 
@@ -68,8 +54,8 @@ const Image = styled.a`
 	cursor: pointer;
 
 	@media only screen and (max-height: 1000px) {
-		width: 7em;
-		height: 7em;
+		width: 6em;
+		height: 6em;
 	}
 
 	> img {
@@ -79,24 +65,29 @@ const Image = styled.a`
 		object-fit: cover;
 
 		@media only screen and (max-height: 1000px) {
-			width: 7em;
-			height: 7em;
+			width: 6em;
+			height: 6em;
 		}
 	}
 `;
 
 const ContentWrapper = styled.div`
-	margin: 3em 3em 3em 0em;
+	margin: 1em 1em 1em 0em;
 
 	@media only screen and (max-width: 1000px) {
-		margin: 3em 3em 3em 3em;
+		margin: 1em 1em 1em 1em;
 	}
 `;
 
 const Header = styled.h1`
 	color: var(--main-color);
+	font-size: 1em;
+	font-weight: bold;
 	margin: 0 0 0.5em 0;
 	font-weight: normal;
+
+	@media only screen and (max-width: 474px) {
+	}
 `;
 
 const Description = styled.p`
@@ -104,13 +95,8 @@ const Description = styled.p`
 	font-size: 0.9em;
 	color: var(--main-color);
 	font-weight: lighter;
-	margin: 0 0 1em 0;
 `;
 
-const Link = styled.a`
-	text-decoration: none;
-	cursor: pointer;
-	color: var(--main-color);
-`;
+const Link = styled.a``;
 
-export default Project;
+export default Skill;

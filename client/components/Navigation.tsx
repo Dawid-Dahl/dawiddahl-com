@@ -89,11 +89,7 @@ const NavButton = styled(animated.div)<StyledNavButtonProps>`
 const Bar = styled(animated.div)`
 	position: absolute;
 	height: 100%;
-	background: linear-gradient(
-		to right bottom,
-		rgba(255, 255, 255, 0.7),
-		rgba(255, 255, 255, 0.3)
-	);
+	background: var(--glassy);
 	z-index: 1;
 	border-radius: 2em;
 	left: 5px;

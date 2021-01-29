@@ -46,27 +46,17 @@ const ImageWrapper = styled.div`
 `;
 
 const Image = styled.a`
-	border-radius: 50%;
-	width: 10em;
-	height: 10em;
+	border-radius: 30%;
+	width: 5em;
+	height: 5em;
 	box-shadow: var(--box-shadow);
 	cursor: pointer;
 
-	@media only screen and (max-height: 1000px) {
-		width: 6em;
-		height: 6em;
-	}
-
 	> img {
-		width: 10em;
-		height: 10em;
-		border-radius: 50%;
+		width: 5em;
+		height: 5em;
+		border-radius: 30%;
 		object-fit: cover;
-
-		@media only screen and (max-height: 1000px) {
-			width: 6em;
-			height: 6em;
-		}
 	}
 `;
 

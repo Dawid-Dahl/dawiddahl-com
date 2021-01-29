@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {Switch, Route} from "react-router-dom";
 import Home from "./Home";
-import Contact from "./Contaxt";
+import Contact from "./Contact";
 import Skills from "./Skills";
 import Projects from "./Projects";
 import {Location} from "history";

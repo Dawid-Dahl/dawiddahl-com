@@ -41,6 +41,11 @@ const Wrapper = styled.div`
 	background-color: var(--white-transparent-card);
 	margin: 0.5em 0em;
 	box-shadow: var(--box-shadow-light);
+	transition: transform 0.3s;
+
+	:hover {
+		transform: scale(1.01) rotate(0.5deg);
+	}
 
 	@media only screen and (max-width: 1000px) {
 		flex-direction: column;

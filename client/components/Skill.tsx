@@ -34,6 +34,11 @@ const Wrapper = styled.div`
 	border-radius: var(--border-radius-card);
 	background-color: var(--white-transparent-card);
 	box-shadow: var(--box-shadow-light);
+	transition: transform 0.3s;
+
+	:hover {
+		transform: scale(1.01) rotate(0.5deg);
+	}
 `;
 
 const ImageWrapper = styled.div`
@@ -50,7 +55,6 @@ const Image = styled.a`
 	width: 5em;
 	height: 5em;
 	box-shadow: var(--box-shadow);
-	cursor: pointer;
 
 	> img {
 		width: 5em;

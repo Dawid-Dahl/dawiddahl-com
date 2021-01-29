@@ -19,10 +19,12 @@ export const Main = () => {
 		leave: {opacity: 0, transform: "translateX(-110vw)"},
 	});
 
+	const styles = {borderRadius: "var(--border-radius)"};
+
 	return (
 		<>
 			{transitionToLeft.map(({item, key, props: transitionProps}) => (
-				<animated.div key={key} style={transitionProps}>
+				<animated.div key={key} style={{...transitionProps, ...styles}}>
 					<Glass>
 						<Routes location={item} />
 					</Glass>

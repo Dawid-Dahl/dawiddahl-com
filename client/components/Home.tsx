@@ -1,30 +1,67 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
+import sanityClient from "../sanityClient";
+import {HomeData, homeDataDefault} from "../types/homeDataType";
+import BlockContent from "@sanity/block-content-to-react";
 
 const Home: React.FC = () => {
-	const imageUrl = "https://bit.ly/3a41zHj";
+	const [homeData, setHomeData] = useState<HomeData[]>(homeDataDefault);
+
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "home"]{
+			profilePicture{
+				asset->{
+					_id,
+					url
+				},
+				alt
+			},
+			name,
+			role,
+			location,
+			introMessage
+		}`
+			)
+			.then(data => data && setHomeData(data))
+			.catch(console.error);
+	}, []);
+
+	const isObjectEmpty = (obj: object) => Object.keys(obj).length === 0;
 
 	return (
-		<Wrapper>
-			<ImageArea>
-				<Image href={imageUrl} target="_blank">
-					<img src={imageUrl} alt="profile picture" />
-				</Image>
-				<Header>
-					<h1>Dawid Dahl</h1>
-					<h3>Full-Stack Web Developer</h3>
-					<p>Stockholm</p>
-				</Header>
-			</ImageArea>
-			<TextArea>
-				<ClipPath />
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi in assumenda
-					magnam impedit ea, ex quam veniam adipisci omnis fuga doloremque placeat aliquid
-					quis mollitia eum iure amet quidem. Vitae.
-				</p>
-			</TextArea>
-		</Wrapper>
+		<>
+			{homeData &&
+				homeData.map(
+					({introMessage, location, name, profilePicture, role}, i) => (
+						console.log(introMessage),
+						(
+							<Wrapper key={i}>
+								<ImageArea>
+									<Image href={profilePicture.asset.url} target="_blank">
+										<img
+											src={profilePicture.asset.url}
+											alt={profilePicture.alt}
+										/>
+									</Image>
+									<Header>
+										<h1>{name}</h1>
+										<h3>{role}</h3>
+										<p>{location}</p>
+									</Header>
+								</ImageArea>
+								<TextArea>
+									<ClipPath />
+									{!isObjectEmpty(introMessage[0]) && (
+										<BlockContent blocks={introMessage} />
+									)}
+								</TextArea>
+							</Wrapper>
+						)
+					)
+				)}
+		</>
 	);
 };
 

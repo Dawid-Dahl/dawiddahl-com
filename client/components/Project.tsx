@@ -44,7 +44,7 @@ const Wrapper = styled.div`
 	transition: transform 0.3s;
 
 	:hover {
-		transform: scale(1.01) rotate(0.5deg);
+		transform: scale(1.01) rotate(0.4deg);
 	}
 
 	@media only screen and (max-width: 1000px) {

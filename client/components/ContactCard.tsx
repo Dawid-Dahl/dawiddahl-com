@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import {ContactData} from "../types/contactDataType";
 
-type Props = {};
+type Props = ContactData;
 
-const ContactCard: React.FC<Props> = () => {
+const ContactCard: React.FC<Props> = ({contactType, information}) => {
 	return (
 		<Wrapper>
-			<ContactType>Email</ContactType>
-			<Information>dawiddahl@gmail.com</Information>
+			<ContactType>{contactType}</ContactType>
+			<Information>{information}</Information>
 		</Wrapper>
 	);
 };

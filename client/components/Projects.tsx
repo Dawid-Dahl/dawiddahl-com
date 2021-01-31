@@ -1,17 +1,42 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Project from "./Project";
+import sanityClient from "../sanityClient";
+import {ProjectData, projectDataDefault} from "../types/projectDataType";
 
 const Projects: React.FC = () => {
+	const [projectData, setProjectData] = useState<ProjectData[]>(projectDataDefault);
+
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "project"]{
+			image{
+				asset->{
+					_id,
+					url
+				},
+				alt
+			},
+			name,
+			description,
+			link,
+		}`
+			)
+			.then(data => data && setProjectData(data))
+			.catch(console.error);
+	}, []);
+
 	return (
 		<Wrapper>
 			<Header>Projects</Header>
-			<ProjectsWrapper>
-				<Project />
-				<Project />
-				<Project />
-				<InvisibleBox />
-			</ProjectsWrapper>
+			{projectData &&
+				projectData.map(({image, name, description, link}, i) => (
+					<ProjectsWrapper key={i}>
+						<Project image={image} name={name} description={description} link={link} />
+						<InvisibleBox />
+					</ProjectsWrapper>
+				))}
 		</Wrapper>
 	);
 };

@@ -1,11 +1,11 @@
 export default {
-	name: "home",
-	title: "Home",
+	name: "project",
+	title: "Project",
 	type: "document",
 	fields: [
 		{
-			name: "profilePicture",
-			title: "Profile Picture",
+			name: "image",
+			title: "Image",
 			type: "image",
 			fields: [
 				{
@@ -21,20 +21,15 @@ export default {
 			type: "string",
 		},
 		{
-			name: "role",
-			title: "Role",
-			type: "string",
-		},
-		{
-			name: "location",
-			title: "Location",
-			type: "string",
-		},
-		{
-			name: "introMessage",
-			title: "Intro Message",
+			name: "description",
+			title: "Description",
 			type: "array",
 			of: [{type: "block"}],
+		},
+		{
+			name: "link",
+			title: "Link",
+			type: "url",
 		},
 	],
 };

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import sanityClient from "../sanityClient";
 import {HomeData, homeDataDefault} from "../types/homeDataType";
 import BlockContent from "@sanity/block-content-to-react";
+import {isObjectEmpty} from "../utils/utils";
 
 const Home: React.FC = () => {
 	const [homeData, setHomeData] = useState<HomeData[]>(homeDataDefault);
@@ -28,39 +29,29 @@ const Home: React.FC = () => {
 			.catch(console.error);
 	}, []);
 
-	const isObjectEmpty = (obj: object) => Object.keys(obj).length === 0;
-
 	return (
 		<>
 			{homeData &&
-				homeData.map(
-					({introMessage, location, name, profilePicture, role}, i) => (
-						console.log(introMessage),
-						(
-							<Wrapper key={i}>
-								<ImageArea>
-									<Image href={profilePicture.asset.url} target="_blank">
-										<img
-											src={profilePicture.asset.url}
-											alt={profilePicture.alt}
-										/>
-									</Image>
-									<Header>
-										<h1>{name}</h1>
-										<h3>{role}</h3>
-										<p>{location}</p>
-									</Header>
-								</ImageArea>
-								<TextArea>
-									<ClipPath />
-									{!isObjectEmpty(introMessage[0]) && (
-										<BlockContent blocks={introMessage} />
-									)}
-								</TextArea>
-							</Wrapper>
-						)
-					)
-				)}
+				homeData.map(({introMessage, location, name, profilePicture, role}, i) => (
+					<Wrapper key={i}>
+						<ImageArea>
+							<Image href={profilePicture.asset.url} target="_blank">
+								<img src={profilePicture.asset.url} alt={profilePicture.alt} />
+							</Image>
+							<Header>
+								<h1>{name}</h1>
+								<h3>{role}</h3>
+								<p>{location}</p>
+							</Header>
+						</ImageArea>
+						<TextArea>
+							<ClipPath />
+							{!isObjectEmpty(introMessage[0]) && (
+								<BlockContent blocks={introMessage} />
+							)}
+						</TextArea>
+					</Wrapper>
+				))}
 		</>
 	);
 };
@@ -154,7 +145,6 @@ const ClipPath = styled.div`
 	float: left;
 
 	@media only screen and (max-width: 474px) {
-		/* shape-outside: polygon(100% 0%, 0% 0%, 0% 70%, 8% 34%, 15% 20%, 28% 12%, 56% 5%); */
 		shape-outside: polygon(100% 0%, 0% 0%, 0% 51%, 8% 34%, 17% 24%, 36% 11%, 56% 5%);
 		width: 75%;
 	}

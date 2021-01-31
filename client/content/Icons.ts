@@ -13,6 +13,11 @@ export const icons: Icon[] = [
 	{name: "contact", imageLink: "https://s2.svgbox.net/hero-outline.svg?color=7a69ff&ic=share"},
 ];
 
+export const linkIcon = {
+	name: "link",
+	imageLink: "https://s2.svgbox.net/hero-outline.svg?color=7a69ff&ic=external-link",
+};
+
 export enum IconsList {
 	home,
 	projects,

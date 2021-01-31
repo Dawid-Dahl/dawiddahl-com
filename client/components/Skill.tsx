@@ -1,24 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import {SkillData} from "../types/skillDataType";
 
-type Props = {};
+type Props = SkillData;
 
-const Skill: React.FC<Props> = () => {
+const Skill: React.FC<Props> = ({image, name, description}) => {
 	return (
 		<Wrapper>
 			<ImageWrapper>
 				<Image>
-					<img
-						src={
-							"https://media.istockphoto.com/photos/true-love-means-never-letting-go-picture-id929598594"
-						}
-						alt="profile picture"
-					/>
+					<img src={image.asset.url} alt={image.alt} />
 				</Image>
 			</ImageWrapper>
 			<ContentWrapper>
-				<Header>Skill</Header>
-				<Description>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</Description>
+				<Header>{name}</Header>
+				<Description>{description}</Description>
 				<Link></Link>
 			</ContentWrapper>
 		</Wrapper>

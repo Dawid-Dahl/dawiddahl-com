@@ -6,6 +6,9 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // Import object and document schemas
 import home from "./home";
+import project from "./project";
+import skill from "./skill";
+import contact from "./contact";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -16,5 +19,8 @@ export default createSchema({
 	types: schemaTypes.concat([
 		/* Your types here! */
 		home,
+		project,
+		skill,
+		contact,
 	]),
 });

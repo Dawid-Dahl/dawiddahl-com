@@ -1,21 +1,38 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import Skill from "./Skill";
+import sanityClient from "../sanityClient";
+import {SkillData, skillDataDefault} from "../types/skillDataType";
 
 const Skills: React.FC = () => {
+	const [skillData, setSkillData] = useState<SkillData[]>(skillDataDefault);
+
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "skill"]{
+			image{
+				asset->{
+					_id,
+					url
+				},
+				alt
+			},
+			name,
+			description,
+		}`
+			)
+			.then(data => data && setSkillData(data))
+			.catch(console.error);
+	}, []);
 	return (
 		<Wrapper>
 			<Header>Skills</Header>
 			<SkillsWrapper>
-				<Skill />
-				<Skill />
-				<Skill />
-				<Skill />
-				<Skill />
-				<Skill />
-				<Skill />
-				<Skill />
-				<Skill />
+				{skillData &&
+					skillData.map(({image, name, description}, i) => (
+						<Skill key={i} image={image} name={name} description={description} />
+					))}
 				<InvisibleBox />
 			</SkillsWrapper>
 		</Wrapper>

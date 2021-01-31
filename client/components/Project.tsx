@@ -1,31 +1,26 @@
+import BlockContent from "@sanity/block-content-to-react";
 import React from "react";
 import styled from "styled-components";
+import {ProjectData} from "../types/projectDataType";
+import {isObjectEmpty} from "../utils/utils";
+import {linkIcon} from "../content/Icons";
 
-type Props = {};
+type Props = ProjectData;
 
-const Project: React.FC<Props> = () => {
+const Project: React.FC<Props> = ({image, name, description, link}) => {
 	return (
 		<Wrapper>
 			<ImageWrapper>
-				<Image>
-					<img
-						src={
-							"https://media.istockphoto.com/photos/true-love-means-never-letting-go-picture-id929598594"
-						}
-						alt="profile picture"
-					/>
+				<Image href={link} target="_blank">
+					<img src={image.asset.url} alt={image.alt} />
 				</Image>
 			</ImageWrapper>
 			<ContentWrapper>
-				<Header>My Project</Header>
+				<Header>{name}</Header>
 				<Description>
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium rem alias
-					totam minus aut dolores amet nemo assumenda, quo delectus id, ratione, impedit
-					aspernatur commodi quibusdam illum temporibus repudiandae nesciunt non
-					perferendis quisquam consequatur sint! Esse deserunt distinctio at vel et. Cum
-					consequatur voluptates fuga dolor quibusdam recusandae. Omnis, commodi!
+					{!isObjectEmpty(description[0]) && <BlockContent blocks={description} />}
 				</Description>
-				<Link href="">Link</Link>
+				<Link href={link} target="_blank" imageLink={linkIcon.imageLink} />
 			</ContentWrapper>
 		</Wrapper>
 	);
@@ -60,7 +55,7 @@ const ImageWrapper = styled.div`
 	display: flex;
 	margin: 3em;
 
-	@media only screen and (max-height: 1000px) {
+	@media only screen and (max-width: 1000px) {
 		margin: 3em 3em 0em 3em;
 	}
 `;
@@ -105,7 +100,7 @@ const Header = styled.h1`
 	font-weight: normal;
 `;
 
-const Description = styled.p`
+const Description = styled.div`
 	margin: 0;
 	font-size: 0.9em;
 	color: var(--main-color);
@@ -113,7 +108,15 @@ const Description = styled.p`
 	margin: 0 0 1em 0;
 `;
 
-const Link = styled.a`
+type StyledLinkProps = {
+	imageLink: string;
+};
+
+const Link = styled.a<StyledLinkProps>`
+	height: 21.33px;
+	width: 21.33px;
+	display: block;
+	background-image: ${props => `url(${props.imageLink})`};
 	text-decoration: none;
 	cursor: pointer;
 	color: var(--main-color);

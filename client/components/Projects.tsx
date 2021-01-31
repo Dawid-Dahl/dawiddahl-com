@@ -44,7 +44,6 @@ const Projects: React.FC = () => {
 const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	flex-direction: column;
 	height: 100%;
 	width: 100%;
@@ -66,7 +65,7 @@ const ProjectsWrapper = styled.div`
 const Header = styled.h1`
 	height: auto;
 	color: var(--white-transparent);
-	margin-top: 4em;
+	margin-top: 1em;
 `;
 
 const InvisibleBox = styled.div`

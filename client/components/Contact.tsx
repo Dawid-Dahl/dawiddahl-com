@@ -38,6 +38,7 @@ const Wrapper = styled.div`
 	justify-content: flex-start;
 	flex-direction: column;
 	margin-top: 4em;
+	text-align: center;
 `;
 
 const Header = styled.h1`

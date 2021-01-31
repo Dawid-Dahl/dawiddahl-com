@@ -15,11 +15,11 @@ const ContactCard: React.FC<Props> = ({contactType, information}) => {
 
 const Wrapper = styled.div`
 	height: auto;
-	min-width: 85%;
+	width: 85%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 0.5em 0;
+	margin: 0.5em 1em;
 	border-radius: var(--border-radius-card);
 	background-color: var(--white-transparent-card);
 	box-shadow: var(--box-shadow-light);
@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 
 	@media only screen and (max-width: 474px) {
 		flex-direction: column;
-		width: 100%;
+		width: 90%;
 	}
 `;
 

@@ -22,15 +22,20 @@ const Skill: React.FC<Props> = ({image, name, description}) => {
 };
 
 const Wrapper = styled.div`
-	height: auto;
+	height: 7em;
 	width: 100%;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	border-radius: var(--border-radius-card);
 	background-color: var(--white-transparent-card);
 	box-shadow: var(--box-shadow-light);
 	transition: transform 0.3s;
+	overflow: scroll;
+	overflow-x: hidden;
+
+	@media only screen and (max-width: 362px) {
+		height: 6em;
+	}
 
 	:hover {
 		transform: scale(1.01) rotate(0.5deg);
@@ -39,6 +44,8 @@ const Wrapper = styled.div`
 
 const ImageWrapper = styled.div`
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	margin: 1em;
 
 	@media only screen and (max-width: 474px) {
@@ -50,21 +57,34 @@ const Image = styled.a`
 	border-radius: 30%;
 	width: 5em;
 	height: 5em;
-	box-shadow: var(--box-shadow);
+	box-shadow: var(--box-shadow-light);
+
+	@media only screen and (max-width: 362px) {
+		width: 4em;
+		height: 4em;
+	}
 
 	> img {
 		width: 5em;
 		height: 5em;
 		border-radius: 30%;
 		object-fit: cover;
+
+		@media only screen and (max-width: 362px) {
+			width: 4em;
+			height: 4em;
+		}
 	}
 `;
 
 const ContentWrapper = styled.div`
-	margin: 1em 1em 1em 0em;
+	display: flex;
+	flex-direction: column;
+	margin: 1.5em 1em 1.5em 0em;
+	text-align: center;
 
 	@media only screen and (max-width: 1000px) {
-		margin: 1em 1em 1em 1em;
+		margin: 1.5em 1em 1.5em 1em;
 	}
 `;
 
@@ -72,7 +92,8 @@ const Header = styled.h1`
 	color: var(--main-color);
 	font-size: 1em;
 	font-weight: bold;
-	margin: 0 0 0.5em 0;
+	//margin: 0 0 0.5em 0;
+	margin: auto;
 	font-weight: normal;
 
 	@media only screen and (max-width: 474px) {
@@ -80,7 +101,8 @@ const Header = styled.h1`
 `;
 
 const Description = styled.p`
-	margin: 0;
+	//margin: 0;
+	margin: auto;
 	font-size: 0.9em;
 	color: var(--main-color);
 	font-weight: lighter;

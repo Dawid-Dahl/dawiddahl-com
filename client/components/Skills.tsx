@@ -30,11 +30,11 @@ const Skills: React.FC = () => {
 			<Header>Skills</Header>
 			<SkillsWrapper>
 				{skillData &&
-					skillData.map(({image, name, description}, i) => (
+					skillData.map(({image = skillDataDefault[0].image, name, description}, i) => (
 						<Skill key={i} image={image} name={name} description={description} />
 					))}
-				<InvisibleBox />
 			</SkillsWrapper>
+			<InvisibleBox />
 		</Wrapper>
 	);
 };

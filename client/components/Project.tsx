@@ -115,6 +115,7 @@ type StyledLinkProps = {
 const Link = styled.a<StyledLinkProps>`
 	height: 21.33px;
 	width: 21.33px;
+	margin: 1em 0 0 0;
 	display: block;
 	background-image: ${props => `url(${props.imageLink})`};
 	text-decoration: none;

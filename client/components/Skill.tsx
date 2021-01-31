@@ -4,7 +4,7 @@ import {SkillData} from "../types/skillDataType";
 
 type Props = SkillData;
 
-const Skill: React.FC<Props> = ({image, name, description}) => {
+const Skill: React.FC<Props> = ({image, name, description = ""}) => {
 	return (
 		<Wrapper>
 			<ImageWrapper>
@@ -14,7 +14,7 @@ const Skill: React.FC<Props> = ({image, name, description}) => {
 			</ImageWrapper>
 			<ContentWrapper>
 				<Header>{name}</Header>
-				<Description>{description}</Description>
+				<Description description={description}>{description}</Description>
 				<Link></Link>
 			</ContentWrapper>
 		</Wrapper>
@@ -25,7 +25,6 @@ const Wrapper = styled.div`
 	height: 7em;
 	width: 100%;
 	display: flex;
-	justify-content: space-evenly;
 	border-radius: var(--border-radius-card);
 	background-color: var(--white-transparent-card);
 	box-shadow: var(--box-shadow-light);
@@ -43,6 +42,7 @@ const Wrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+	flex: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -78,6 +78,7 @@ const Image = styled.a`
 `;
 
 const ContentWrapper = styled.div`
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 	margin: 1.5em 1em 1.5em 0em;
@@ -100,8 +101,8 @@ const Header = styled.h1`
 	}
 `;
 
-const Description = styled.p`
-	//margin: 0;
+const Description = styled.p<Pick<SkillData, "description">>`
+	display: ${props => (props.description.length > 1 ? "block" : "none")};
 	margin: auto;
 	font-size: 0.9em;
 	color: var(--main-color);

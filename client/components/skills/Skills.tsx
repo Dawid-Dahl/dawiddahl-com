@@ -4,10 +4,17 @@ import Skill from "./Skill";
 import sanityClient from "../../sanityClient";
 import {SkillData, skillDataDefault} from "../../types/skillDataType";
 
-const Skills: React.FC = () => {
+type Props = {
+	isLoading: boolean;
+	setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Skills: React.FC<Props> = ({isLoading, setIsLoading}) => {
 	const [skillData, setSkillData] = useState<SkillData[]>(skillDataDefault);
 
 	useEffect(() => {
+		setIsLoading(true);
+
 		sanityClient
 			.fetch(
 				`*[_type == "skill"]{
@@ -22,7 +29,10 @@ const Skills: React.FC = () => {
 			description,
 		}`
 			)
-			.then(data => data && setSkillData(data))
+			.then(data => {
+				setIsLoading(false);
+				data && setSkillData(data);
+			})
 			.catch(console.error);
 	}, []);
 	return (
@@ -30,8 +40,8 @@ const Skills: React.FC = () => {
 			<Header>Skills</Header>
 			<SkillsWrapper>
 				{skillData &&
-					skillData.map(({image = skillDataDefault[0].image, name, description}, i) => (
-						<Skill key={i} image={image} name={name} description={description} />
+					skillData.map((skill, i) => (
+						<Skill key={i} skill={skill} isLoading={isLoading} />
 					))}
 			</SkillsWrapper>
 			<InvisibleBox />

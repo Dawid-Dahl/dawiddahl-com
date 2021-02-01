@@ -1,11 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import {SkillData} from "../../types/skillDataType";
+import {loadingSpinner} from "../../content/Icons";
 
-type Props = SkillData;
+type Props = {
+	skill: SkillData;
+	isLoading: boolean;
+};
 
-const Skill: React.FC<Props> = ({image, name, description = ""}) => {
-	return (
+const Skill: React.FC<Props> = ({skill, isLoading}) => {
+	const {image, name, description = ""} = skill;
+
+	return isLoading ? (
+		<LoadingSpinner>
+			<img src={loadingSpinner.imageLink} alt="loading spinner" />
+		</LoadingSpinner>
+	) : (
 		<Wrapper>
 			<ImageWrapper>
 				<Image>
@@ -110,5 +120,13 @@ const Description = styled.p<Pick<SkillData, "description">>`
 `;
 
 const Link = styled.a``;
+
+const LoadingSpinner = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
 
 export default Skill;

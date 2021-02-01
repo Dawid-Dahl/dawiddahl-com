@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {Switch, Route} from "react-router-dom";
 import Home from "./home/Home";
@@ -12,13 +12,30 @@ type Props = {
 };
 
 const Routes: React.FC<Props> = ({location}) => {
+	const [isLoading, setIsLoading] = useState(false);
+
 	return (
 		<Switch location={location}>
-			<Route path="/home" component={Home} />
-			<Route path="/projects" component={Projects} />
-			<Route path="/skills" component={Skills} />
-			<Route path="/contact" component={Contact} />
-			<Route path="/" component={Home} />
+			<Route
+				path="/home"
+				render={() => <Home isLoading={isLoading} setIsLoading={setIsLoading} />}
+			/>
+			<Route
+				path="/projects"
+				render={() => <Projects isLoading={isLoading} setIsLoading={setIsLoading} />}
+			/>
+			<Route
+				path="/skills"
+				render={() => <Skills isLoading={isLoading} setIsLoading={setIsLoading} />}
+			/>
+			<Route
+				path="/contact"
+				render={() => <Contact isLoading={isLoading} setIsLoading={setIsLoading} />}
+			/>
+			<Route
+				path="/"
+				render={() => <Home isLoading={isLoading} setIsLoading={setIsLoading} />}
+			/>
 		</Switch>
 	);
 };

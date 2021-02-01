@@ -4,10 +4,17 @@ import styled from "styled-components";
 import sanityClient from "../../sanityClient";
 import {ContactData, contactDataDefault} from "../../types/contactDataType";
 
-const Contact: React.FC = () => {
+type Props = {
+	isLoading: boolean;
+	setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Contact: React.FC<Props> = ({isLoading, setIsLoading}) => {
 	const [contactData, setContactData] = useState<ContactData[]>(contactDataDefault);
 
 	useEffect(() => {
+		setIsLoading(true);
+
 		sanityClient
 			.fetch(
 				`*[_type == "contact"]{
@@ -15,7 +22,10 @@ const Contact: React.FC = () => {
 			information,
 		}`
 			)
-			.then(data => data && setContactData(data))
+			.then(data => {
+				setIsLoading(false);
+				data && setContactData(data);
+			})
 			.catch(console.error);
 	}, []);
 
@@ -23,8 +33,8 @@ const Contact: React.FC = () => {
 		<Wrapper>
 			<Header>Contact</Header>
 			{contactData &&
-				contactData.map(({contactType, information}, i) => (
-					<ContactCard key={i} contactType={contactType} information={information} />
+				contactData.map((contactData, i) => (
+					<ContactCard key={i} contactData={contactData} isLoading={isLoading} />
 				))}
 		</Wrapper>
 	);

@@ -1,11 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import {ContactData} from "../../types/contactDataType";
+import {loadingSpinner} from "../../content/Icons";
 
-type Props = ContactData;
+type Props = {
+	contactData: ContactData;
+	isLoading: boolean;
+};
 
-const ContactCard: React.FC<Props> = ({contactType, information}) => {
-	return (
+const ContactCard: React.FC<Props> = ({contactData, isLoading}) => {
+	const {contactType, information} = contactData;
+
+	return isLoading ? (
+		<LoadingSpinner>
+			<img src={loadingSpinner.imageLink} alt="loading spinner" />
+		</LoadingSpinner>
+	) : (
 		<Wrapper>
 			<ContactType>{contactType}</ContactType>
 			<Information>{information}</Information>
@@ -57,6 +67,14 @@ const Information = styled.p`
 	@media only screen and (max-width: 474px) {
 		margin: 0.5em 0.5em 1em 0.5em;
 	}
+`;
+
+const LoadingSpinner = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
 export default ContactCard;

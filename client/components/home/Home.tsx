@@ -4,11 +4,19 @@ import sanityClient from "../../sanityClient";
 import {HomeData, homeDataDefault} from "../../types/homeDataType";
 import BlockContent from "@sanity/block-content-to-react";
 import {isObjectEmpty} from "../../utils/utils";
+import {loadingSpinner} from "../../content/Icons";
 
-const Home: React.FC = () => {
+type Props = {
+	isLoading: boolean;
+	setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Home: React.FC<Props> = ({isLoading, setIsLoading}) => {
 	const [homeData, setHomeData] = useState<HomeData[]>(homeDataDefault);
 
 	useEffect(() => {
+		setIsLoading(true);
+
 		sanityClient
 			.fetch(
 				`*[_type == "home"]{
@@ -25,11 +33,18 @@ const Home: React.FC = () => {
 			introMessage
 		}`
 			)
-			.then(data => data && setHomeData(data))
+			.then(data => {
+				setIsLoading(false);
+				data && setHomeData(data);
+			})
 			.catch(console.error);
 	}, []);
 
-	return (
+	return isLoading ? (
+		<LoadingSpinner>
+			<img src={loadingSpinner.imageLink} alt="loading spinner" />
+		</LoadingSpinner>
+	) : (
 		<>
 			{homeData &&
 				homeData.map(({introMessage, location, name, profilePicture, role}, i) => (
@@ -190,6 +205,14 @@ const TextArea = styled.div`
 			margin-top: 7%;
 		}
 	}
+`;
+
+const LoadingSpinner = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
 export default Home;

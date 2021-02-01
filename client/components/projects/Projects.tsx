@@ -4,9 +4,13 @@ import Project from "./Project";
 import sanityClient from "../../sanityClient";
 import {ProjectData, projectDataDefault} from "../../types/projectDataType";
 
-const Projects: React.FC = () => {
+type Props = {
+	isLoading: boolean;
+	setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Projects: React.FC<Props> = ({isLoading, setIsLoading}) => {
 	const [projectData, setProjectData] = useState<ProjectData[]>(projectDataDefault);
-	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		setIsLoading(true);

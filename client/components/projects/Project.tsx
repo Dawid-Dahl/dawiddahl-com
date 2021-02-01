@@ -1,14 +1,23 @@
 import BlockContent from "@sanity/block-content-to-react";
 import React from "react";
 import styled from "styled-components";
-import {ProjectData} from "../types/projectDataType";
-import {isObjectEmpty} from "../utils/utils";
-import {linkIcon} from "../content/Icons";
+import {ProjectData} from "../../types/projectDataType";
+import {isObjectEmpty} from "../../utils/utils";
+import {linkIcon, loadingSpinner} from "../../content/Icons";
 
-type Props = ProjectData;
+type Props = {
+	project: ProjectData;
+	isLoading: boolean;
+};
 
-const Project: React.FC<Props> = ({image, name, description, link}) => {
-	return (
+const Project: React.FC<Props> = ({project, isLoading}) => {
+	const {image, name, description, link} = project;
+
+	return isLoading ? (
+		<LoadingSpinner>
+			<img src={loadingSpinner.imageLink} alt="loading spinner" />
+		</LoadingSpinner>
+	) : (
 		<Wrapper>
 			<ImageWrapper>
 				<Image href={link} target="_blank">
@@ -121,6 +130,14 @@ const Link = styled.a<StyledLinkProps>`
 	text-decoration: none;
 	cursor: pointer;
 	color: var(--main-color);
+`;
+
+const LoadingSpinner = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
 export default Project;

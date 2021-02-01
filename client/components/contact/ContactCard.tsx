@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {ContactData} from "../types/contactDataType";
+import {ContactData} from "../../types/contactDataType";
 
 type Props = ContactData;
 

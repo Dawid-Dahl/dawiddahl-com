@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import {Switch, Route} from "react-router-dom";
-import Home from "./Home";
-import Contact from "./Contact";
-import Skills from "./Skills";
-import Projects from "./Projects";
+import Home from "./home/Home";
+import Contact from "./contact/Contact";
+import Skills from "./skills/Skills";
+import Projects from "./projects/Projects";
 import {Location} from "history";
 
 type Props = {

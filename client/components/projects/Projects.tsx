@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Project from "./Project";
-import sanityClient from "../sanityClient";
-import {ProjectData, projectDataDefault} from "../types/projectDataType";
+import sanityClient from "../../sanityClient";
+import {ProjectData, projectDataDefault} from "../../types/projectDataType";
 
 const Projects: React.FC = () => {
 	const [projectData, setProjectData] = useState<ProjectData[]>(projectDataDefault);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
+		setIsLoading(true);
+
 		sanityClient
 			.fetch(
 				`*[_type == "project"]{
@@ -23,7 +26,10 @@ const Projects: React.FC = () => {
 			link,
 		}`
 			)
-			.then(data => data && setProjectData(data))
+			.then(data => {
+				setIsLoading(false);
+				data && setProjectData(data);
+			})
 			.catch(console.error);
 	}, []);
 
@@ -31,9 +37,9 @@ const Projects: React.FC = () => {
 		<Wrapper>
 			<Header>Projects</Header>
 			{projectData &&
-				projectData.map(({image, name, description, link}, i) => (
+				projectData.map((project, i) => (
 					<ProjectsWrapper key={i}>
-						<Project image={image} name={name} description={description} link={link} />
+						<Project project={project} isLoading={isLoading} />
 						<InvisibleBox />
 					</ProjectsWrapper>
 				))}

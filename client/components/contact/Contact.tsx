@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import ContactCard from "./ContactCard";
 import styled from "styled-components";
-import sanityClient from "../sanityClient";
-import {ContactData, contactDataDefault} from "../types/contactDataType";
+import sanityClient from "../../sanityClient";
+import {ContactData, contactDataDefault} from "../../types/contactDataType";
 
 const Contact: React.FC = () => {
 	const [contactData, setContactData] = useState<ContactData[]>(contactDataDefault);

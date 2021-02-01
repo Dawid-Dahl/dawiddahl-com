@@ -18,6 +18,11 @@ export const linkIcon = {
 	imageLink: "https://s2.svgbox.net/hero-outline.svg?color=7a69ff&ic=external-link",
 };
 
+export const loadingSpinner = {
+	name: "spinner",
+	imageLink: "https://s2.svgbox.net/loaders.svg?color=7a69ff&ic=puff",
+};
+
 export enum IconsList {
 	home,
 	projects,

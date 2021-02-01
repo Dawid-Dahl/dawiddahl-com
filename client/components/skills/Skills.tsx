@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import Skill from "./Skill";
-import sanityClient from "../sanityClient";
-import {SkillData, skillDataDefault} from "../types/skillDataType";
+import sanityClient from "../../sanityClient";
+import {SkillData, skillDataDefault} from "../../types/skillDataType";
 
 const Skills: React.FC = () => {
 	const [skillData, setSkillData] = useState<SkillData[]>(skillDataDefault);

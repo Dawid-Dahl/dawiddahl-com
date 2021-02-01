@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import sanityClient from "../sanityClient";
-import {HomeData, homeDataDefault} from "../types/homeDataType";
+import sanityClient from "../../sanityClient";
+import {HomeData, homeDataDefault} from "../../types/homeDataType";
 import BlockContent from "@sanity/block-content-to-react";
-import {isObjectEmpty} from "../utils/utils";
+import {isObjectEmpty} from "../../utils/utils";
 
 const Home: React.FC = () => {
 	const [homeData, setHomeData] = useState<HomeData[]>(homeDataDefault);

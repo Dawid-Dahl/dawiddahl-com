@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {SkillData} from "../types/skillDataType";
+import {SkillData} from "../../types/skillDataType";
 
 type Props = SkillData;
 

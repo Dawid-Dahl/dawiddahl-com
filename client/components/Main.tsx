@@ -13,7 +13,6 @@ export const Main = () => {
 			opacity: 0,
 			transform: "translateX(100vw)",
 			position: "absolute",
-			backdropFilter: "blur(0.5em)",
 		},
 		enter: {opacity: 1, transform: "translateX(0vw)"},
 		leave: {opacity: 0, transform: "translateX(-110vw)"},
@@ -23,6 +22,8 @@ export const Main = () => {
 		borderRadius: "var(--border-radius)",
 		overflow: "hidden",
 		height: "calc(var(--app-height) + -15%)",
+		backdropFilter: "blur(0.5em)",
+		webkitBackdropFilter: "blur(10px)",
 	};
 
 	return (

@@ -14,12 +14,12 @@ const Wrapper = styled(animated.div)`
 	width: 75vw;
 	height: 75vh;
 	display: flex;
-	align-items: center;
 	justify-content: center;
 	background: var(--glassy);
 	border-radius: var(--border-radius);
 	z-index: 1;
-	overflow: hidden;
+	overflow: scroll;
+	overflow-x: hidden;
 
 	@media only screen and (max-width: 474px) {
 		width: 90vw;

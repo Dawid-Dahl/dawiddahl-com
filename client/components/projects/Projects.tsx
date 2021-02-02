@@ -44,9 +44,9 @@ const Projects: React.FC<Props> = ({isLoading, setIsLoading}) => {
 				projectData.map((project, i) => (
 					<ProjectsWrapper key={i}>
 						<Project project={project} isLoading={isLoading} />
-						<InvisibleBox />
 					</ProjectsWrapper>
 				))}
+			<InvisibleBox />
 		</Wrapper>
 	);
 };
@@ -55,10 +55,8 @@ const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	height: 100%;
+	height: fit-content;
 	width: 100%;
-	overflow: scroll;
-	overflow-x: hidden;
 
 	@media only screen and (max-width: 474px) {
 	}
@@ -76,10 +74,11 @@ const Header = styled.h1`
 	height: auto;
 	color: var(--white-transparent);
 	margin-top: 1em;
+	text-align: center;
 `;
 
 const InvisibleBox = styled.div`
-	min-height: 10%;
+	min-height: 1em;
 	width: 100%;
 	background-color: transparent;
 	color: transparent;

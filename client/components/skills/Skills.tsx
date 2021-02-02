@@ -65,8 +65,8 @@ const Wrapper = styled.div`
 `;
 
 const SkillsWrapper = styled.div`
-	width: 90%;
-	height: fit-content;
+	width: 100%;
+	height: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	grid-gap: 1em;

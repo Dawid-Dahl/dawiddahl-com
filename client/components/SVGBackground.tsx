@@ -35,7 +35,7 @@ const SVGBackground: React.FC<Props> = ({color}) => {
 
 const Wrapper = styled.div`
 	position: absolute;
-	height: 100vh;
+	height: var(--app-height);
 	width: 100%;
 	display: flex;
 	align-items: flex-end;

@@ -23,7 +23,7 @@ export const Main = () => {
 		overflow: "hidden",
 		height: "calc(var(--app-height) + -15%)",
 		backdropFilter: "blur(0.5em)",
-		webkitBackdropFilter: "blur(10px)",
+		WebkitBackdropFilter: "blur(10px)",
 	};
 
 	return (

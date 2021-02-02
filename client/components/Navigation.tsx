@@ -93,6 +93,7 @@ const Bar = styled(animated.div)`
 	z-index: 1;
 	border-radius: 2em;
 	left: 5px;
+	overflow: hidden;
 
 	@media only screen and (max-width: 474px) {
 	}

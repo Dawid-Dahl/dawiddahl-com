@@ -19,7 +19,7 @@ export const Main = () => {
 		leave: {opacity: 0, transform: "translateX(-110vw)"},
 	});
 
-	const styles = {borderRadius: "var(--border-radius)"};
+	const styles = {borderRadius: "var(--border-radius)", overflow: "hidden"};
 
 	return (
 		<>

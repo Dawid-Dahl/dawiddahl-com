@@ -50,10 +50,6 @@ const Skills: React.FC<Props> = ({isLoading, setIsLoading}) => {
 };
 
 const Wrapper = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
 	height: 100%;
 	width: 100%;
 	overflow: scroll;
@@ -65,15 +61,14 @@ const Wrapper = styled.div`
 `;
 
 const SkillsWrapper = styled.div`
-	width: 100%;
-	height: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	grid-gap: 1em;
-	margin: 0 auto;
+	margin: 0em 2em;
 
 	@media only screen and (max-width: 474px) {
 		grid-template-columns: 1fr;
+		margin: 0em 1em;
 	}
 `;
 

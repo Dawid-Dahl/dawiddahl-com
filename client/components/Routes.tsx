@@ -40,6 +40,4 @@ const Routes: React.FC<Props> = ({location}) => {
 	);
 };
 
-const Wrapper = styled.div``;
-
 export default Routes;

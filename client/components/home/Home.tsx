@@ -189,8 +189,9 @@ const TextArea = styled.div`
 			font-size: 1.2em;
 		}
 
-		@media only screen and (max-width: 474px) {
+		@media only screen and (max-width: 474px) and (max-height: 750px) {
 			margin-top: 5%;
+			margin-bottom: 6em;
 		}
 
 		@media only screen and (min-width: 1500px) {

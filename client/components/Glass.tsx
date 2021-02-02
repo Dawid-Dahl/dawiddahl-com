@@ -12,13 +12,12 @@ const Glass: React.FC = ({children}) => {
 
 const Wrapper = styled(animated.div)`
 	width: 75vw;
-	height: 75vh;
+	height: 80vh;
 	display: flex;
 	justify-content: center;
 	background: var(--glassy);
 	border-radius: var(--border-radius);
 	z-index: 1;
-	overflow: scroll;
 	overflow-x: hidden;
 
 	@media only screen and (max-width: 474px) {

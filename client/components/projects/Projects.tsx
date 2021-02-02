@@ -46,7 +46,6 @@ const Projects: React.FC<Props> = ({isLoading, setIsLoading}) => {
 						<Project project={project} isLoading={isLoading} />
 					</ProjectsWrapper>
 				))}
-			<InvisibleBox />
 		</Wrapper>
 	);
 };
@@ -57,8 +56,10 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	height: fit-content;
 	width: 100%;
+	margin: 0 0 3em 0;
 
 	@media only screen and (max-width: 474px) {
+		margin: 0 0 8em 0;
 	}
 `;
 
@@ -75,13 +76,6 @@ const Header = styled.h1`
 	color: var(--white-transparent);
 	margin-top: 1em;
 	text-align: center;
-`;
-
-const InvisibleBox = styled.div`
-	min-height: 1em;
-	width: 100%;
-	background-color: transparent;
-	color: transparent;
 `;
 
 export default Projects;

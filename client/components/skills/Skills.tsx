@@ -44,7 +44,6 @@ const Skills: React.FC<Props> = ({isLoading, setIsLoading}) => {
 						<Skill key={i} skill={skill} isLoading={isLoading} />
 					))}
 			</SkillsWrapper>
-			<InvisibleBox />
 		</Wrapper>
 	);
 };
@@ -64,11 +63,11 @@ const SkillsWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	grid-gap: 1em;
-	margin: 0em 2em;
+	margin: 0em 1em 3em 1em;
 
 	@media only screen and (max-width: 474px) {
 		grid-template-columns: 1fr;
-		margin: 0em 1em;
+		margin: 0em 1em 8em 1em;
 	}
 `;
 
@@ -78,13 +77,6 @@ const Header = styled.h1`
 	align-items: center;
 	justify-content: center;
 	margin-top: 1em;
-`;
-
-const InvisibleBox = styled.div`
-	min-height: 10%;
-	width: 100%;
-	background-color: transparent;
-	color: transparent;
 `;
 
 export default Skills;

@@ -46,12 +46,12 @@ const OuterWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
+	height: var(--app-height);
 	background: linear-gradient(to right top, #2700ff, #ffffff);
 `;
 
 const Wrapper = styled.div`
-	height: 100vh;
+	height: var(--app-height);
 	margin: 0 1em;
 	display: flex;
 	align-items: center;
